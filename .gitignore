@@ -5,6 +5,7 @@ Thumbs.db
 # IDE files
 .idea/
 .vscode/
+.cursor/
 *.sublime-project
 *.sublime-workspace
 
@@ -16,14 +17,28 @@ node_modules/
 *.min.js
 *.min.css
 
-# WordPress specific - only ignore sensitive files
+# WordPress Core Files (Only manage wp-content)
+wp-admin/
+wp-includes/
+index.php
+license.txt
+readme.html
+xmlrpc.php
 wp-config.php
+wp-config-sample.php
+wp-config.php.bak
+
+# WordPress specific - only ignore sensitive files
 wp-content/uploads/
 wp-content/cache/
 wp-content/backups/
 wp-content/backup-db/
 wp-content/upgrade/
 wp-content/debug.log
+
+# Cache and Temporary Files
+*.log
+*.sql
 
 # Environment files
 .env
