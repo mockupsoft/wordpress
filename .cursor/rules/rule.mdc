@@ -1,0 +1,70 @@
+---
+description: Rules
+globs: 
+alwaysApply: false
+---
+# General Rules
+- Follow **WordPress coding standards** and best practices.
+- Apply **DRY (Don't Repeat Yourself)** and **SOLID** principles.
+- Ensure **code readability** with proper naming conventions and comments.
+- Use **namespaces and prefixes** to avoid conflicts with other plugins or themes.
+- Avoid creating unnecessary files or directories.
+
+# Plugin Development
+- Store all plugins in the `/wp-content/plugins/` directory.
+- Use the **WordPress Plugin Boilerplate** structure for modularity.
+- Register custom hooks and filters properly using `add_action()` and `add_filter()`.
+- Ensure **plugin activation and deactivation hooks** are properly implemented.
+- Use **nonces (`wp_nonce_field()` and `check_admin_referer()`)** to prevent CSRF attacks.
+- Separate logic into **includes, admin, and public folders**.
+- Register custom settings using **Settings API**.
+- Add proper **uninstall hooks** to clean up database entries.
+
+# Module Development
+- Use **shortcodes (`add_shortcode()`)** for modular functionality.
+- Register custom post types (`register_post_type()`) properly.
+- Implement **custom taxonomies** using `register_taxonomy()`.
+- Use **REST API endpoints (`register_rest_route()`)** for external integrations.
+- Ensure all database queries use **$wpdb** with prepared statements to prevent SQL injection.
+- Follow **WordPress transients (`set_transient()`, `get_transient()`)** for caching.
+
+# Performance & Optimization
+- Minimize **direct database queries**, use **WordPress query functions (`WP_Query`, `get_posts()`)**.
+- Optimize **cron jobs**, avoid unnecessary executions.
+- Use **AJAX properly** to avoid page reloads.
+- Implement **lazy loading for images and assets**.
+- Use **object caching (`wp_cache_set()`, `wp_cache_get()`)** when necessary.
+
+# Security
+- Escape all output using **esc_html(), esc_attr(), esc_url()**.
+- Sanitize all input using **sanitize_text_field(), sanitize_email(), sanitize_url()**.
+- Validate user permissions using **current_user_can()** before executing sensitive actions.
+- Protect against **XSS, CSRF, and SQL injection attacks**.
+- Avoid direct file access, use **ABSPATH checks** (`if (!defined('ABSPATH')) exit;`).
+- Ensure **proper capability checks for admin actions**.
+
+# UI/UX Best Practices
+- Use **WordPress admin styles (`wp_enqueue_style()`, `wp_enqueue_script()`)** for custom UI elements.
+- Ensure all **forms have validation and nonce protection**.
+- Follow **WordPress dashboard UI/UX consistency**.
+- Provide proper **admin notices (`add_settings_error()`, `wp_die()`)**.
+- Implement **Gutenberg blocks (`register_block_type()`)** where applicable.
+
+# Code Organization
+- Structure files using **MVC principles** where possible.
+- Separate **business logic, templates, and assets**.
+- Store reusable functions inside **a helper class**.
+- Keep **database queries and business logic inside classes**.
+- Load scripts and styles properly using `wp_enqueue_scripts`.
+
+# Documentation Standards
+- Document all functions and classes using PHPDoc format.
+- Provide a `README.md` file explaining the plugin/module usage.
+- Add installation and setup instructions in the documentation.
+
+# Deployment Guidelines
+- Use `define('WP_DEBUG', false);` in production.
+- Minify CSS and JavaScript files before deploying.
+- Ensure database migrations and uninstall routines are tested.
+- Remove unnecessary files (`debug.log`, `.git`, `node_modules/`).
+- Always test with the latest WordPress version before release.
